@@ -1,17 +1,43 @@
-# eXpOS Project
+# eXpOS Project – Stage 5 Completed
 
-This repository contains my work on the eXpOS operating system project.
+This repository contains my work on the **eXpOS (Experimental Operating System)** project based on the official roadmap provided by NIT Calicut.
 
-## Progress
-- Stage 2 completed
-- Implemented simulated filesystem
-- Inode table and root file handling
-- File creation and deletion using xfs-interface
+## 📌 Current Status
+✅ Completed **Stage 5** of the eXpOS Roadmap
 
-## Tools Used
-- XSM Machine Simulator
-- XFS Interface
-- Docker / Colima on macOS
+## 🧭 Roadmap Reference
+Official Roadmap:  
+https://exposnitc.github.io/Roadmap.html
 
-## Status
-Currently completed up to Stage 2.
+---
+
+## 🧠 Stage 5 Overview – XSM Debugging
+
+In **Stage 5**, the focus was on understanding and using the **XSM Debugger** to analyze program execution at the machine level.
+
+### ✔️ Concepts Learned
+- Using the **XSM debugger**
+- Setting breakpoints
+- Inspecting registers and memory
+- Stepping through instructions
+- Understanding instruction execution flow
+- Debugging SPL and assembly programs
+
+### ✔️ Tasks Completed
+- Successfully ran programs in debug mode
+- Used debugger commands to trace execution
+- Verified correctness of instructions and memory updates
+
+---
+
+## 🛠️ Tools Used
+- **XSM Simulator**
+- **XSM Debugger**
+- **SPL (System Programming Language)**
+- **XFS Interface**
+- **Docker / Colima environment**
+
+---
+
+## 📂 Project Structure
+
