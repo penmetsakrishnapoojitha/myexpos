@@ -1,64 +1,83 @@
-# eXpOS – Stage 6: User Program Execution
+# eXpOS – Stage 7: ABI and Executable Format
 
-This repository contains my implementation of **Stage 6** of the **eXpOS (Experimental Operating System)** project developed at NIT Calicut.
+This repository contains my implementation of **Stage 7** of the **eXpOS (Experimental Operating System)** project developed at NIT Calicut.
 
-## 🎯 Objective of Stage 6
-The objective of Stage 6 is to enable **execution of user-level programs** in eXpOS.  
-This stage introduces **process creation, user–kernel mode switching, and system call handling**, allowing a user program to run correctly on the XSM machine.
+## 🎯 Objective of Stage 7
+The objective of Stage 7 is to understand and implement the **Application Binary Interface (ABI)** and the **executable file format** used by eXpOS.
+
+This stage ensures that **user programs, libraries, and the OS kernel follow a common convention** for execution, memory layout, and system call interaction.
+
+---
 
 ## 🧩 Key Concepts Implemented
 
-### 1. User Program Execution
-- User programs are written in **SPL**
-- Programs execute in **user mode**
-- Direct access to kernel memory or hardware is restricted
+### 1. Application Binary Interface (ABI)
+- Defines a standard interface between:
+  - User programs
+  - Library code
+  - Kernel
+- Specifies:
+  - Register usage conventions
+  - Stack layout
+  - Parameter passing mechanism
+  - Return value conventions
 
-### 2. INIT Process Creation
-- During system boot, the kernel creates the **INIT process**
-- A **Process Control Block (PCB)** is initialized
-- PCB stores process-related information such as:
-  - Process ID
-  - State
+### 2. Executable File Format
+- User programs are stored as **`.xsm` executable files**
+- Executables follow a predefined memory layout
+- Entry point address is fixed according to ABI rules
+
+### 3. Register Conventions
+- Dedicated registers used for:
   - Stack pointer
-  - Instruction pointer
+  - Return address
+  - System call arguments
+- Ensures consistency across user and kernel code
 
-### 3. Loading User Program
-- The user program is loaded into **user memory**
-- Stack and entry point are initialized
-- Program Counter is set to the starting instruction
+### 4. Stack and Memory Layout
+- User stack is initialized as per ABI
+- Code, stack, and heap regions are clearly separated
+- Paging is configured to respect ABI-defined regions
 
-### 4. Kernel → User Mode Switch
-- CPU switches from **kernel mode** to **user mode**
-- Control is transferred to the user program
-- Protection mechanisms prevent illegal access
+### 5. INIT Program Execution
+- INIT program compiled using ABI-compliant format
+- Loaded into memory by the OS startup module
+- Executed in **user mode** following ABI rules
 
-### 5. System Call Handling
-- User programs request kernel services using **software interrupts**
-- Control switches to kernel mode
-- Kernel executes the requested service
-- Control returns to user mode after completion
+---
 
-### 6. Program Termination
-- User program terminates using the `Exit` system call
-- Process state is updated
-- Control returns to the kernel
+## 🧠 Concepts Learned
+- Importance of ABI in operating systems
+- Executable loading and entry point handling
+- Register and stack discipline
+- Interaction between user programs and kernel
+
+---
 
 ## 🛠 Tools & Environment
 - SPL (System Programming Language)
 - XSM Simulator
-- Docker / Colima (for macOS)
+- xfs-interface
+- Docker / Colima (macOS)
 - Linux-based environment
 
+---
+
 ## ▶️ How to Run
-1. Compile SPL modules using the SPL compiler
-2. Load kernel and user programs into disk image
+1. Compile user programs using ABI-compliant SPL compiler
+2. Load library, INIT program, and OS startup code using `xfs-interface`
 3. Boot the XSM machine
-4. Observe user program execution through console output
+4. Verify correct execution of ABI-compliant user programs
+
+---
 
 ## 📚 References
 - eXpOS Documentation: https://exposnitc.github.io/expos-docs/
 - eXpOS Roadmap: https://exposnitc.github.io/Roadmap.html
 
+---
+
 ## 👩‍💻 Author
 **Poojitha Penmetsa**
+
 
