@@ -1,0 +1,4 @@
+load --int=7 /myexpos/spl/samples/int7.xsm
+load --init /myexpos/expl/expl_progs/print_1_20.xsm
+load --os /myexpos/spl/samples/os_startup_writesystemcall.xsm
+load --int=timer /myexpos/spl/samples/timer_kernelstack.xsm
