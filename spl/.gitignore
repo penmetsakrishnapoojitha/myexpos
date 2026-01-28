@@ -7,6 +7,5 @@ y.tab.h
 *.xsm
 *.temp
 *.o
-*xsm
 .DS_Store
 .vscode/
