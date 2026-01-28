@@ -1,0 +1,25 @@
+type
+student{
+    str name;
+    int marks;
+}
+endtype
+int main(){
+    decl
+    int temp,a;
+    str b;
+    student x;
+    enddecl
+
+    begin
+    temp=exposcall("Heapset");
+    x=exposcall("Alloc",3);
+    x.name="John";
+    x.marks=89;
+    a=x.marks;
+    temp=exposcall("Write",-2,x.name);
+    temp=exposcall("Write",-2,a);
+    temp=exposcall("Free",x);
+    return 0;
+    end
+}
