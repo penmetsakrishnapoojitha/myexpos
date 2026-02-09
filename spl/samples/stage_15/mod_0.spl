@@ -1,0 +1,33 @@
+alias fun_num R1;
+alias curr_id R2;
+if(fun_num==8)then
+while([TERMINAL_STATUS_TABLE+0]==1)do
+[PROCESS_TABLE+16*curr_id+4]=WAIT_TERMINAL;
+multipush(R1,R2);
+call MOD_5;
+multipop(R1,R2);
+endwhile;
+[TERMINAL_STATUS_TABLE+0]=1;
+[TERMINAL_STATUS_TABLE+1]=curr_id;
+breakpoint;
+return;
+else
+if(fun_num==9)then
+    if(curr_id!=[TERMINAL_STATUS_TABLE+1])then
+      R0=-1;
+      return;
+      endif;
+    [TERMINAL_STATUS_TABLE+0]=0;
+    alias count R4;
+    count=1;
+    while(count<16)do
+    if([PROCESS_TABLE+count*16+4]==WAIT_TERMINAL)then
+    [PROCESS_TABLE+count*16+4]=READY;
+    endif;
+    count=count+1;
+    endwhile;
+    R0=0;
+    endif;
+endif;
+breakpoint;
+return;

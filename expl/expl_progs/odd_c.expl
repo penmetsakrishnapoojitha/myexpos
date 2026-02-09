@@ -1,0 +1,17 @@
+int main(){
+    decl
+    int c,temp,d;
+    enddecl
+    begin
+    c=1;
+    while(c<=100)do
+    if((c%2)!=0)then
+    d=c*c*c;
+    temp=exposcall("Write",-2,d);
+    endif;
+    c=c+1;
+    endwhile;
+    return 0;
+    end
+
+}

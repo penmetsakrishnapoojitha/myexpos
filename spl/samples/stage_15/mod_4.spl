@@ -1,0 +1,18 @@
+alias function_num R1;
+alias curr_id R2;
+if(function_num==3)then
+ multipush(R1,R2,R3);
+ R1=8;
+ R2=curr_id;
+ call MOD_0;
+ multipop(R1,R2,R3);
+print R3;
+multipush(R1,R2,R3);
+R1=9;
+R2=curr_id;
+call MOD_0;
+alias ret R0;
+ret=R0;
+ multipop(R1,R2,R3);
+ endif;
+ return;

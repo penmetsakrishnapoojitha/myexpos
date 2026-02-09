@@ -1,0 +1,43 @@
+alias pid R5;
+pid=[SYSTEM_STATUS_TABLE+1];
+//multipush(BP);
+SP=SP+1;
+[SP]=BP;
+alias current_process_address R6;
+current_process_address=PROCESS_TABLE+(pid*16);
+[current_process_address+12]=SP%512;
+[current_process_address+14]=PTBR;
+[current_process_address+15]=PTLR;
+alias next_id R7;
+alias flag R8;
+flag=0;
+next_id=(pid+1)%16;
+while(pid!=next_id)do
+if([PROCESS_TABLE + next_id * 16 + 4] == READY || [PROCESS_TABLE + next_id*16 + 4] == CREATED) then
+       flag=1;
+       [SYSTEM_STATUS_TABLE+1]=next_id;
+		break;
+	endif;
+	next_id = (next_id + 1) % 16;
+endwhile;
+if(flag==0)then
+[SYSTEM_STATUS_TABLE+1]=0;
+endif;
+SP=[PROCESS_TABLE+(16*next_id)+11]*512+[PROCESS_TABLE+(16*next_id)+12];
+PTBR=[PROCESS_TABLE+(16*next_id)+14];
+PTLR=[PROCESS_TABLE+(16*next_id)+15];
+if([PROCESS_TABLE+(16*next_id)+4]==CREATED)then
+ SP=[PROCESS_TABLE+(16*next_id)+13];
+[PROCESS_TABLE+(16*next_id)+4]=RUNNING;
+[PROCESS_TABLE+(16*next_id)+9]=0;
+ireturn;
+endif;
+[PROCESS_TABLE+(16*next_id)+4]=RUNNING;
+//multipop(BP);
+BP=[SP];
+SP=SP-1;
+return;
+
+
+
+
