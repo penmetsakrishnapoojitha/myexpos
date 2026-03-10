@@ -15,8 +15,8 @@ root
 -1
 -1
 3
-even_100.xsm
-166
+odd.xsm
+170
 0
 -1
 -1
@@ -31,8 +31,8 @@ even_100.xsm
 -1
 -1
 3
-prime.xsm
-266
+list.xsm
+508
 0
 -1
 -1

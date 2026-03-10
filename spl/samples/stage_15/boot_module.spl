@@ -5,6 +5,7 @@ loadi(4, 17);
 loadi(5, 18);
 loadi(63,13);
 loadi(64,14);
+//init
 loadi(65,7);
 loadi(66,8);
 loadi(22,35);

@@ -1,0 +1,15 @@
+load --library $HOME/myexpos/expl/library.lib
+load --os $HOME/myexpos/spl/samples/os_startup_final.xsm
+load --module 7 $HOME/myexpos/spl/samples/stage_19/boot_module.xsm
+load --int=7  $HOME/myexpos/spl/samples/stage_15/int7.xsm
+load --int=6  $HOME/myexpos/spl/samples/stage_16/int_6.xsm
+load --int=9  $HOME/myexpos/spl/samples/stage_19/int_9.xsm
+load --module 0 $HOME/myexpos/spl/samples/stage_18/mod_0.xsm
+load --module 4 $HOME/myexpos/spl/samples/stage_18/mod_4.xsm
+load --module 1 $HOME/myexpos/spl/samples/stage_19/mod_1.xsm
+load --module 2 $HOME/myexpos/spl/samples/stage_19/mod_2.xsm
+load --int=console $HOME/myexpos/spl/samples/stage_16/console_interrupt.xsm
+load --int=disk $HOME/myexpos/spl/samples/stage_18/disk_interrupt.xsm
+load --exhandler $HOME/myexpos/spl/samples/stage_19/excep_handler.xsm
+load --idle  $HOME/myexpos/expl/expl_progs/idle.xsm
+load --init $HOME/myexpos/expl/expl_progs/init_exec.xsm

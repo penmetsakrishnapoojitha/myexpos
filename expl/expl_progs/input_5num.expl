@@ -1,0 +1,13 @@
+int main(){
+    decl
+    int temp,c,a;
+    enddecl
+    begin
+      c=0;
+    while(c<5)do
+    temp=exposcall("Read",-1,a);
+    c=c+1;
+    endwhile;
+    return 0;
+    end
+}

@@ -6,8 +6,7 @@ int main(){
     c=1;
     while(c<=100)do
     if((c%2)!=0)then
-    d=c*c*c;
-    temp=exposcall("Write",-2,d);
+    temp=exposcall("Write",-2,c);
     endif;
     c=c+1;
     endwhile;

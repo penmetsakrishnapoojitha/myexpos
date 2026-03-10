@@ -1,7 +1,20 @@
 alias fun_num R1;
 alias curr_id R2;
+
+if(fun_num==3)then
+while([DISK_STATUS_TABLE]==1)do
+[PROCESS_TABLE+curr_id*16+4]=WAIT_DISK;
+multipush(R1,R2);
+call MOD_5;
+multipop(R1,R2);
+endwhile;
+[DISK_STATUS_TABLE]=1;
+[DISK_STATUS_TABLE+4]=curr_id;
+return;
+endif;
+
 if(fun_num==8)then
-while([TERMINAL_STATUS_TABLE+0]==1)do
+while([TERMINAL_STATUS_TABLE+0]!=0)do
 [PROCESS_TABLE+16*curr_id+4]=WAIT_TERMINAL;
 multipush(R1,R2);
 call MOD_5;
@@ -10,15 +23,16 @@ endwhile;
 [TERMINAL_STATUS_TABLE]=1;
 [TERMINAL_STATUS_TABLE+1]=curr_id;
 return;
-else
+endif;
+
 if(fun_num==9)then
     if(curr_id!=[TERMINAL_STATUS_TABLE+1])then
       R0=-1;
       return;
-      endif;
+    else
     [TERMINAL_STATUS_TABLE+0]=0;
     alias count R4;
-    count=1;
+    count=0;
     while(count<16)do
     if([PROCESS_TABLE+count*16+4]==WAIT_TERMINAL)then
     [PROCESS_TABLE+count*16+4]=READY;
@@ -26,6 +40,10 @@ if(fun_num==9)then
     count=count+1;
     endwhile;
     R0=0;
-    endif;
+   return;
+  endif;
+else
+    alias returnValue R0;
+    returnValue = -1;
+    return;
 endif;
-return;
