@@ -1,0 +1,33 @@
+[PROCESS_TABLE + [SYSTEM_STATUS_TABLE + 1] * 16 + 13] = SP;
+[PROCESS_TABLE + [SYSTEM_STATUS_TABLE + 1] * 16 + 9] = 21;
+SP = [PROCESS_TABLE + [SYSTEM_STATUS_TABLE + 1] * 16 + 11] * 512 - 1;
+if ([SYSTEM_STATUS_TABLE + 1] != 1 && [PROCESS_TABLE + [SYSTEM_STATUS_TABLE + 1] * 16 + 3] != 1) then
+    SP = [PROCESS_TABLE + [SYSTEM_STATUS_TABLE + 1] * 16 + 13];
+    [PROCESS_TABLE + [SYSTEM_STATUS_TABLE + 1] * 16 + 9] = 0;
+    ireturn;
+else
+    R1 = 1;
+    R2 = [SYSTEM_STATUS_TABLE + 1];
+    R3 = 59;//inode_table
+    R4 = 3;
+    call MOD_4;
+
+     R1 = 1;
+    R2 = [SYSTEM_STATUS_TABLE + 1];
+    R3 = 60;//user_table
+    R4 = 4;
+    call MOD_4;
+
+     R1 = 1;
+    R2 = [SYSTEM_STATUS_TABLE + 1];
+    R3 = 61;//disk_free_list
+    R4 = 2;
+    call MOD_4;
+
+     R1 = 1;
+    R2 = [SYSTEM_STATUS_TABLE + 1];
+    R3 = 62;//ROOT_FILE
+    R4 = 2;
+    call MOD_4;
+    halt;
+endif;

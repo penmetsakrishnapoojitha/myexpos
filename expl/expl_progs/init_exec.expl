@@ -2,6 +2,7 @@ int main(){
     decl
         int x;
         str fileName;
+        str name;
     enddecl
 
     begin
